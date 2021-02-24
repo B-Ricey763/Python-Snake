@@ -1,9 +1,9 @@
 import sys
 import pygame
 from pygame import draw
-from pygame import display
 from pygame.locals import *
 from pygame.time import Clock
+from field import *
 
 clock = Clock()
 
@@ -15,18 +15,15 @@ white = 255, 255, 255
 
 screen = pygame.display.set_mode(size)
 
-field = [[0 for y in range(10)] for x in range(10)]
-
+field = Field(10, 10)
+i = 0
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
-    
+    i+=1
     screen.fill(black)
-    for y in range(len(field)):
-        for x in range(len(field[0])):
-            if field[x][y] == 1:
-
-                draw.rect(screen, white, (x*10, y*10, 10, 10))
+    field.set_value(Point(i, 1), FieldState.SNAKE)
+    field.render(screen)
     pygame.display.update()
 
     clock.tick(60)
