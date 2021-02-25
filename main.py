@@ -22,7 +22,7 @@ while True:
         if event.type == pygame.QUIT: sys.exit()
     i+=1
     screen.fill(black)
-    field.set_value(Point(i, 1), FieldState.SNAKE)
+    
     field.render(screen)
     pygame.display.update()
 
